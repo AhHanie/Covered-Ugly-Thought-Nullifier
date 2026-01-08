@@ -11,8 +11,20 @@ namespace CoveredUglyNullifier
             LongEventHandler.QueueLongEvent(Init, "Covered Ugly Init", doAsynchronously: true, null);
         }
 
+        public override string SettingsCategory()
+        {
+            return "CoveredUglyNullifier.SettingsTitle".Translate();
+        }
+
+        public override void DoSettingsWindowContents(UnityEngine.Rect inRect)
+        {
+            ModSettingsWindow.Draw(inRect);
+            base.DoSettingsWindowContents(inRect);
+        }
+
         public void Init()
         {
+            GetSettings<ModSettings>();
             FullyCoveringApparelCache.BuildCache();
         }
     }

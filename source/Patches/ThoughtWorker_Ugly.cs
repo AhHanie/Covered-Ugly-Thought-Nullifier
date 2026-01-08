@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+using System.Collections.Generic;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -12,11 +13,17 @@ namespace CoveredUglyNullifier
             if (other?.apparel?.WornApparel == null || other.apparel.WornApparel.Count == 0)
                 return true;
 
+            HashSet<ThingDef> coverageDefs = ModSettings.UseFaceOnly
+                ? FullyCoveringApparelCache.FullHeadApparelDefs
+                : FullyCoveringApparelCache.FullyCoveringApparelDefs;
+            if (coverageDefs.Count == 0)
+                return true;
+
             var worn = other.apparel.WornApparel;
             for (int i = 0; i < worn.Count; i++)
             {
                 var app = worn[i];
-                if (app?.def != null && FullyCoveringApparelCache.FullyCoveringApparelDefs.Contains(app.def))
+                if (app?.def != null && coverageDefs.Contains(app.def))
                 {
                     __result = false; // nullify ugly thought
                     return false;     // skip vanilla

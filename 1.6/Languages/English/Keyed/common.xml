@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CoveredUglyNullifier.SettingsTitle>Covered Ugly Thought Nullifier</CoveredUglyNullifier.SettingsTitle>
+  <CoveredUglyNullifier.SettingFullCoverage>Full body coverage mode</CoveredUglyNullifier.SettingFullCoverage>
+  <CoveredUglyNullifier.SettingFullCoverageTooltip>Requires coverage of: FullHead, UpperHead, Neck, Shoulders, Torso, Legs, Arms.</CoveredUglyNullifier.SettingFullCoverageTooltip>
+  <CoveredUglyNullifier.SettingFaceOnly>Face only mode (FullHead)</CoveredUglyNullifier.SettingFaceOnly>
+</LanguageData>
