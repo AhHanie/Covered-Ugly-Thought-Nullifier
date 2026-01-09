@@ -33,7 +33,7 @@ namespace CoveredUglyNullifier
 
             public static void Postfix(Pawn_ApparelTracker __instance, Apparel apparel)
             {
-                Pawn pawn = __instance?.pawn;
+                Pawn pawn = __instance.pawn;
                 if (!IsValidPawn(pawn))
                     return;
 
@@ -52,7 +52,7 @@ namespace CoveredUglyNullifier
 
         private static bool HasRepulsiveGene(Pawn pawn)
         {
-            if (pawn?.genes == null)
+            if (pawn.genes == null)
                 return false;
 
             return pawn.genes.HasActiveGene(AlphaGenesCompat.AG_Beauty_VeryVeryUgly);
@@ -60,7 +60,7 @@ namespace CoveredUglyNullifier
 
         private static bool IsFullyCovered(Pawn pawn)
         {
-            if (pawn?.apparel?.WornApparel == null || pawn.apparel.WornApparel.Count == 0)
+            if (pawn.apparel?.WornApparel == null || pawn.apparel.WornApparel.Count == 0)
                 return false;
 
             HashSet<ThingDef> coverageDefs = ModSettings.UseFaceOnly
@@ -83,27 +83,25 @@ namespace CoveredUglyNullifier
 
         private static void TryRemoveHediff(Pawn pawn, HediffDef hediffDef)
         {
-            if (pawn?.health?.hediffSet == null)
+            if (pawn.health?.hediffSet == null)
                 return;
 
             Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
             if (hediff != null)
             {
                 pawn.health.RemoveHediff(hediff);
-                Log.Message("Removing AG_Disgust hediff");
             }
         }
 
         private static void TryAddHediff(Pawn pawn, HediffDef hediffDef)
         {
-            if (pawn?.health == null)
+            if (pawn.health == null)
                 return;
 
             Hediff existing = pawn.health.hediffSet?.GetFirstHediffOfDef(hediffDef);
             if (existing != null)
                 return;
 
-            Log.Message("Adding AG_Disgust hediff");
             pawn.health.AddHediff(hediffDef);
         }
     }
