@@ -67,14 +67,11 @@ namespace CoveredUglyNullifier
                 ? FullyCoveringApparelCache.FullHeadApparelDefs
                 : FullyCoveringApparelCache.FullyCoveringApparelDefs;
 
-            if (coverageDefs == null || coverageDefs.Count == 0)
-                return false;
-
             var worn = pawn.apparel.WornApparel;
             for (int i = 0; i < worn.Count; i++)
             {
                 ThingDef def = worn[i]?.def;
-                if (def != null && coverageDefs.Contains(def))
+                if (coverageDefs.Contains(def))
                     return true;
             }
 

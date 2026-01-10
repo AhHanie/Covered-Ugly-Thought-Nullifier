@@ -67,6 +67,8 @@
   <ItemGroup>
     <Compile Include="FullyCoveringApparelCache.cs" />
     <Compile Include="AlphaGenesCompat.cs" />
+    <Compile Include="HumanHeadPartDefs.cs" />
+    <Compile Include="Patches\RelationsUtility.cs" />
     <Compile Include="Patches\\Pawn_ApparelTracker.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="ModSettingsWindow.cs" />

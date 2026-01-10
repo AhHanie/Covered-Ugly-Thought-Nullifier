@@ -6,12 +6,14 @@ namespace CoveredUglyNullifier
     {
         public static bool UseFullCoverage = true;
         public static bool UseFaceOnly = false;
+        public static bool UseDisfiguredCalculation = true;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref UseFullCoverage, "UseFullCoverage", true);
             Scribe_Values.Look(ref UseFaceOnly, "UseFaceOnly", false);
+            Scribe_Values.Look(ref UseDisfiguredCalculation, "UseDisfiguredCalculation", true);
         }
     }
 }

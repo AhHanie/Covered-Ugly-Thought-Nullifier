@@ -27,6 +27,11 @@ namespace CoveredUglyNullifier
                 ModSettings.UseFullCoverage = !useFaceOnly;
             }
 
+            listing.CheckboxLabeled(
+                "CoveredUglyNullifier.SettingDisfiguredCalculation".Translate(),
+                ref ModSettings.UseDisfiguredCalculation,
+                "CoveredUglyNullifier.SettingDisfiguredCalculationTooltip".Translate());
+
             listing.End();
         }
     }
