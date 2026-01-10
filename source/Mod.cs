@@ -25,6 +25,7 @@ namespace CoveredUglyNullifier
         public void Init()
         {
             GetSettings<ModSettings>();
+            AlphaGenesCompat.Init();
             FullyCoveringApparelCache.BuildCache();
         }
     }
