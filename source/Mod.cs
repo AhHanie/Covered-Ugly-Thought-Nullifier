@@ -7,7 +7,6 @@ namespace CoveredUglyNullifier
     {
         public CoveredUglyNullifierMod(ModContentPack content) : base(content)
         {
-            new Harmony("sk.covereduglynullifier").PatchAll();
             LongEventHandler.QueueLongEvent(Init, "Covered Ugly Init", doAsynchronously: true, null);
         }
 
@@ -27,6 +26,7 @@ namespace CoveredUglyNullifier
             GetSettings<ModSettings>();
             AlphaGenesCompat.Init();
             FullyCoveringApparelCache.BuildCache();
+            new Harmony("sk.covereduglynullifier").PatchAll();
         }
     }
 }

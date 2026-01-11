@@ -6,4 +6,7 @@
   <CoveredUglyNullifier.SettingFaceOnly>Face only mode (FullHead)</CoveredUglyNullifier.SettingFaceOnly>
   <CoveredUglyNullifier.SettingDisfiguredCalculation>Suppress disfigured thought when covered</CoveredUglyNullifier.SettingDisfiguredCalculation>
   <CoveredUglyNullifier.SettingDisfiguredCalculationTooltip>Pawns get a negative social opinion for scars or missing parts. When enabled, that disfigured opinion is suppressed if the pawn is covered.</CoveredUglyNullifier.SettingDisfiguredCalculationTooltip>
+  <CoveredUglyNullifier.SettingPrettyNullification>Suppress pretty thought when covered</CoveredUglyNullifier.SettingPrettyNullification>
+  <CoveredUglyNullifier.SettingPrettyNullificationTooltip>Pawns get a positive social opinion for beauty. When enabled, that pretty opinion is suppressed if the pawn is covered.</CoveredUglyNullifier.SettingPrettyNullificationTooltip>
+  <CoveredUglyNullifier.SettingRestartNote>Some settings require a game restart.</CoveredUglyNullifier.SettingRestartNote>
 </LanguageData>

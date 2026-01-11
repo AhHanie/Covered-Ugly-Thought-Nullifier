@@ -32,6 +32,13 @@ namespace CoveredUglyNullifier
                 ref ModSettings.UseDisfiguredCalculation,
                 "CoveredUglyNullifier.SettingDisfiguredCalculationTooltip".Translate());
 
+            listing.CheckboxLabeled(
+                "CoveredUglyNullifier.SettingPrettyNullification".Translate(),
+                ref ModSettings.UsePrettyNullification,
+                "CoveredUglyNullifier.SettingPrettyNullificationTooltip".Translate());
+
+            listing.Label("CoveredUglyNullifier.SettingRestartNote".Translate());
+
             listing.End();
         }
     }
