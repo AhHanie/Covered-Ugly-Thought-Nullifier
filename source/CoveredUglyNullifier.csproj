@@ -71,6 +71,8 @@
     <Compile Include="Patches\RelationsUtility.cs" />
     <Compile Include="Patches\ThoughtWorker_Pretty.cs" />
     <Compile Include="Patches\\Pawn_ApparelTracker.cs" />
+    <Compile Include="Patches\\ThoughtWorker_AlphaGenes_EldritchVisage.cs" />
+    <Compile Include="Patches\\ThoughtWorker_AlphaGenes_UnsettlingAppearance.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="ModSettingsWindow.cs" />
     <Compile Include="Patches\ThoughtWorker_Ugly.cs" />

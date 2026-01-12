@@ -37,6 +37,24 @@ namespace CoveredUglyNullifier
                 ref ModSettings.UsePrettyNullification,
                 "CoveredUglyNullifier.SettingPrettyNullificationTooltip".Translate());
 
+            if (AlphaGenesCompat.Enabled)
+            {
+                listing.GapLine();
+                listing.Label("CoveredUglyNullifier.AlphaGenesSectionTitle".Translate());
+                listing.CheckboxLabeled(
+                    "CoveredUglyNullifier.SettingAlphaGenesRepulsive".Translate(),
+                    ref ModSettings.UseAlphaGenesRepulsive);
+                listing.CheckboxLabeled(
+                    "CoveredUglyNullifier.SettingAlphaGenesAngelic".Translate(),
+                    ref ModSettings.UseAlphaGenesAngelic);
+                listing.CheckboxLabeled(
+                    "CoveredUglyNullifier.SettingAlphaGenesUnsettlingAppearance".Translate(),
+                    ref ModSettings.UseAlphaGenesUnsettlingAppearance);
+                listing.CheckboxLabeled(
+                    "CoveredUglyNullifier.SettingAlphaGenesEldritchVisage".Translate(),
+                    ref ModSettings.UseAlphaGenesEldritchVisage);
+            }
+
             listing.Label("CoveredUglyNullifier.SettingRestartNote".Translate());
 
             listing.End();

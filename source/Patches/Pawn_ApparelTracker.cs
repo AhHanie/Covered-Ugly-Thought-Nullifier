@@ -10,26 +10,12 @@ namespace CoveredUglyNullifier
         [HarmonyPatch(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Notify_ApparelAdded))]
         public static class Notify_ApparelAdded
         {
-            public static bool Prepare() => AlphaGenesCompat.Enabled;
-
-            public static void Postfix(Pawn_ApparelTracker __instance, Apparel apparel)
+            public static bool Prepare()
             {
-                Pawn pawn = __instance?.pawn;
-                if (!IsValidPawn(pawn))
-                    return;
-
-                if (!HasRepulsiveGene(pawn))
-                    return;
-
-                if (IsFullyCovered(pawn))
-                    TryRemoveHediff(pawn, AlphaGenesCompat.AG_Disgust);
+                return AlphaGenesCompat.Enabled
+                    && (ModSettings.UseAlphaGenesRepulsive
+                        || ModSettings.UseAlphaGenesAngelic);
             }
-        }
-
-        [HarmonyPatch(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Notify_ApparelRemoved))]
-        public static class Notify_ApparelRemoved
-        {
-            public static bool Prepare() => AlphaGenesCompat.Enabled;
 
             public static void Postfix(Pawn_ApparelTracker __instance, Apparel apparel)
             {
@@ -37,11 +23,47 @@ namespace CoveredUglyNullifier
                 if (!IsValidPawn(pawn))
                     return;
 
-                if (!HasRepulsiveGene(pawn))
+                if (!IsFullyCovered(pawn))
                     return;
 
-                if (!IsFullyCovered(pawn))
+                if (pawn.genes == null)
+                    return;
+
+                if (ModSettings.UseAlphaGenesRepulsive && HasRepulsiveGene(pawn))
+                    TryRemoveHediff(pawn, AlphaGenesCompat.AG_Disgust);
+
+                if (ModSettings.UseAlphaGenesAngelic && HasAngelicGene(pawn))
+                    TryRemoveHediff(pawn, AlphaGenesCompat.AG_Awe);
+            }
+        }
+
+        [HarmonyPatch(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Notify_ApparelRemoved))]
+        public static class Notify_ApparelRemoved
+        {
+            public static bool Prepare()
+            {
+                return AlphaGenesCompat.Enabled
+                    && (ModSettings.UseAlphaGenesRepulsive
+                        || ModSettings.UseAlphaGenesAngelic);
+            }
+
+            public static void Postfix(Pawn_ApparelTracker __instance, Apparel apparel)
+            {
+                Pawn pawn = __instance.pawn;
+                if (!IsValidPawn(pawn))
+                    return;
+
+                if (IsFullyCovered(pawn))
+                    return;
+
+                if (pawn.genes == null)
+                    return;
+
+                if (ModSettings.UseAlphaGenesRepulsive && HasRepulsiveGene(pawn))
                     TryAddHediff(pawn, AlphaGenesCompat.AG_Disgust);
+
+                if (ModSettings.UseAlphaGenesAngelic && HasAngelicGene(pawn))
+                    TryAddHediff(pawn, AlphaGenesCompat.AG_Awe);
             }
         }
 
@@ -52,10 +74,12 @@ namespace CoveredUglyNullifier
 
         private static bool HasRepulsiveGene(Pawn pawn)
         {
-            if (pawn.genes == null)
-                return false;
-
             return pawn.genes.HasActiveGene(AlphaGenesCompat.AG_Beauty_VeryVeryUgly);
+        }
+
+        private static bool HasAngelicGene(Pawn pawn)
+        {
+            return pawn.genes.HasActiveGene(AlphaGenesCompat.AG_Beauty_Angelic);
         }
 
         private static bool IsFullyCovered(Pawn pawn)

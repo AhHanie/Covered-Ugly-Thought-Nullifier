@@ -8,7 +8,9 @@ namespace CoveredUglyNullifier
         public static bool Enabled => ModsConfig.IsActive("sarg.alphagenes");
 
         public static HediffDef AG_Disgust;
+        public static HediffDef AG_Awe;
         public static GeneDef AG_Beauty_VeryVeryUgly;
+        public static GeneDef AG_Beauty_Angelic;
 
         public static void Init()
         {
@@ -18,7 +20,9 @@ namespace CoveredUglyNullifier
             }
 
             AG_Disgust = DefDatabase<HediffDef>.GetNamedSilentFail("AG_Disgust");
+            AG_Awe = DefDatabase<HediffDef>.GetNamedSilentFail("AG_Awe");
             AG_Beauty_VeryVeryUgly = DefDatabase<GeneDef>.GetNamedSilentFail("AG_Beauty_VeryVeryUgly");
+            AG_Beauty_Angelic = DefDatabase<GeneDef>.GetNamedSilentFail("AG_Beauty_Angelic");
         }
     }
 }
