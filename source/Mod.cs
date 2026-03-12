@@ -7,7 +7,7 @@ namespace CoveredUglyNullifier
     {
         public CoveredUglyNullifierMod(ModContentPack content) : base(content)
         {
-            LongEventHandler.QueueLongEvent(Init, "Covered Ugly Init", doAsynchronously: true, null);
+            LongEventHandler.QueueLongEvent(Init, "CoveredUglyNullifier.LoadingLabel", doAsynchronously: true, null);
         }
 
         public override string SettingsCategory()
